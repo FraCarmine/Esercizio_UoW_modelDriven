@@ -6,8 +6,6 @@ import java.util.List;
 public class DaoPatternDemo {
 	public static void main(String[] args) {
 	      
-	      // 1. Configurazione Infrastruttura
-	      // Sostituisci con i tuoi dati reali del DB
 	      String url = "jdbc:mariadb://localhost/student"; 
 	      String user = "root";
 	      String password = "";
