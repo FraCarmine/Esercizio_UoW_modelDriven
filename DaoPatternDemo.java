@@ -4,26 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoPatternDemo {
-   public static void main(String[] args) {
-      StudentDao studentDao = new StudentDaoImpl();
-      Student john = new Student("john", 1);
-      Student robert = new Student("robert",0);
-      
-      studentDao.addStudent(robert);
-      studentDao.addStudent(john);
+	public static void main(String[] args) {
+	      
+	      // 1. Configurazione Infrastruttura
+	      // Sostituisci con i tuoi dati reali del DB
+	      String url = "jdbc:mariadb://localhost/student"; 
+	      String user = "root";
+	      String password = "";
 
-      //print all students
-      for (Student student : studentDao.getAllStudents()) {
-         System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");
-      }
+	      TransactionManager tm = new TransactionManager(url, user, password);
+	      StudentDao dao = new StudentDaoImpl();
+	      
 
-      //update student
-      Student student =studentDao.getAllStudents().get(0);
-      student.setName("Michael");
-      studentDao.updateStudent(student);
+	      StudentService service = new StudentService(tm, dao);
 
-      //get the student
-      studentDao.getStudent(0);
-      System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");		
-   }
+	      // 3. Esecuzione del Caso d'Uso
+	      Student nuovoStudente = new Student("Marco", 105);
+	      
+	      System.out.println("--- Avvio Processo Iscrizione ---");
+	      service.enrollNewStudent(nuovoStudente);
+	   }
 }
