@@ -7,6 +7,7 @@ public class StudentDaoImpl implements StudentDao {
 
 	//niente gestione della connessione 
 
+	//faccio le singole query lato sql senza avere la logica ad alto livello 
     @Override
     public void addStudent(Connection conn, Student student) throws SQLException {
  
