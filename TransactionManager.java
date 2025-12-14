@@ -21,6 +21,7 @@ public class TransactionManager {
         R apply(Connection c) throws SQLException;
     }
 
+    //contratto che accetta la funzione e qua gestisco solo connessione
     public <T> T inTransaction(SQLFunction<T> work) {
         try (Connection c = DriverManager.getConnection(url, user, password)) {
             

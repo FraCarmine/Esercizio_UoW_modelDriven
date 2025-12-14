@@ -14,6 +14,7 @@ public class StudentService {
     //caso d'uso 
     public void enrollNewStudent(Student s) {
     	try {
+    		//lambda e gestisco solo la funzione inel logica
             tm.inTransaction(conn -> {
                 // 1. Creare lo studente
                 System.out.println("Step 1: Creazione studente " + s.getName());
